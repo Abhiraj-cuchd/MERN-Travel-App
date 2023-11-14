@@ -1,0 +1,10 @@
+{
+    "editor.formatOnSave": true,
+    "window.zoomLevel": 0.8,
+    "editor.fontFamily": "Jetbrains Mono",
+    "editor.fontLigatures": true,
+    "editor.fontSize": 14,
+    "editor.fontWeight": "350",
+    "files.autoSave": "afterDelay",
+    "editor.wordWrap": "bounded"
+}
