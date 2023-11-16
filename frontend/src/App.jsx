@@ -7,15 +7,17 @@ import Register from "./Pages/Auth/Register";
 import About from "./Pages/About";
 import Profile from "./Pages/Profile";
 import Header from "./Components/Header";
+import { ToastContainer } from "react-toastify";
 
 const App = () => {
   return (
     <BrowserRouter>
+    <ToastContainer theme="dark" position="top-left" autoClose={3500} />
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/sign-in" element={<Login />} />
-        <Route path="/sign-up" element={<Register />} />
+        <Route path="/secure/admin-login" element={<Login />} />
+        <Route path="/secure/admin-register" element={<Register />} />
         <Route path="/about" element={<About />} />
         <Route path="/profile" element={<Profile />} />
       </Routes>
