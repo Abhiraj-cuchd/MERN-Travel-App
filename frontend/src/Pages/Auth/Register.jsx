@@ -72,7 +72,7 @@ const Register = () => {
         />
         <button
           disabled={loading}
-          className="bg-orange-500 p-2 rounded-lg shadow-lg text-xl text-white  hover:opacity-95 disabled:opacity-80"
+          className="bg-[#009DAE] p-2 rounded-lg shadow-lg text-xl text-white  hover:opacity-95 disabled:opacity-80"
         >
           {loading ? "Loading..." : "Register"}
         </button>
@@ -81,7 +81,7 @@ const Register = () => {
         <p className="text-center">
           Already have an account?
           <Link to="/secure/admin-login">
-            <span className="text-orange-500 font-bold"> Login</span>
+            <span className="text-[#009DAE] font-bold"> Login</span>
           </Link>
         </p>
       </div>

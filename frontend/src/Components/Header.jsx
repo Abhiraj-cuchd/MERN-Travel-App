@@ -1,17 +1,21 @@
 import React from "react";
 import { FaSearch } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import logoIcon from "../assets/logo2.png";
 
 const Header = () => {
   return (
-    <header className="bg-orange-400 shadow-lg">
+    <header className="bg-[#009DAE] shadow-lg">
       <div className="flex justify-evenly items-center max-w-6xl mx-auto p-3">
-        <Link to="/">
-          <h1 className="font-bold text-sm sm:text-xl flex flex-wrap">
-            <span className="text-white">Travellio</span>
-            {/* <span className="text-slate-700">Assam</span> */}
-          </h1>
-        </Link>
+        <div className="flex w-[40px] h-[40px]">
+          <img src={logoIcon} alt="logo" className="mr-2 mt-1" />
+          <Link to="/">
+            <h1 className="font-bold text-sm sm:text-xl flex flex-wrap mt-3">
+              <span className="text-white">ZYatraa</span>
+              {/* <span className="text-slate-700">Assam</span> */}
+            </h1>
+          </Link>
+        </div>
         <form className="bg-slate-100 p-2 rounded-lg flex items-center">
           <input
             type="text"
