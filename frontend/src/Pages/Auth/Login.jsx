@@ -1,14 +1,20 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  signInFailure,
+  signInStart,
+  signInSuccess,
+} from "../../redux/User/userSlice";
+import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
   const [formData, setFormData] = useState({});
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const { loading, error } = useSelector((state) => state.user);
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.id]: e.target.value });
@@ -17,7 +23,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      setLoading(true);
+      dispatch(signInStart());
       const res = await fetch("/api/auth/sign-in", {
         method: "POST",
         headers: {
@@ -27,17 +33,15 @@ const Login = () => {
       });
       const data = await res.json();
       if (data.success === false) {
-        setLoading(false);
-        setError(data.message);
+        dispatch(signInFailure(data.message));
         return;
       }
-      setLoading(false);
-      setError(null);
+      dispatch(signInSuccess(data));
       toast.success("Login successful. Welcome to Travellio.");
-      navigate('/');
-    } catch (error) {
-      setLoading(false);
-      setError(error.message);
+      navigate("/");
+    } catch (err) {
+      toast.error("Login failed. Please try again.");
+      dispatch(signInFailure(err.message));
     }
   };
 
@@ -63,7 +67,7 @@ const Login = () => {
           {loading ? "Loading..." : "Login"}
         </button>
       </form>
-      <div className="">
+      <div className="mt-5">
         <p className="text-center">
           Dont have an account?
           <span className="text-[#009DAE] font-bold">
@@ -72,6 +76,7 @@ const Login = () => {
           </span>
         </p>
       </div>
+      {error && <p className="text-red-500 mt-5">{toast.error(error, {toastId: 'Invalid User'})}</p>}
     </div>
   );
 };

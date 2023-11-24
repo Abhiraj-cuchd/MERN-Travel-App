@@ -1,4 +1,3 @@
-import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Home from "./Pages/Home";
@@ -12,7 +11,7 @@ import { ToastContainer } from "react-toastify";
 const App = () => {
   return (
     <BrowserRouter>
-    <ToastContainer theme="dark" position="top-left" autoClose={3500} />
+      <ToastContainer theme="dark" position="top-left" autoClose={3500} />
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
