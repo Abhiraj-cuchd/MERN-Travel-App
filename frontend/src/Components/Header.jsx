@@ -1,9 +1,12 @@
-import React from "react";
 import { FaSearch } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 import logoIcon from "../assets/logo2.png";
+import admin from "../assets/admin.jpeg";
 
 const Header = () => {
+  const { currentUser } = useSelector((state) => state.user);
+
   return (
     <header className="bg-[#009DAE] shadow-lg">
       <div className="flex justify-evenly items-center max-w-6xl mx-auto p-3">
@@ -11,8 +14,8 @@ const Header = () => {
           <img src={logoIcon} alt="logo" className="mr-2 mt-1" />
           <Link to="/">
             <h1 className="font-bold text-sm sm:text-xl flex flex-wrap mt-3">
-              <span className="text-white">ZYatraa</span>
-              {/* <span className="text-slate-700">Assam</span> */}
+              <span className="text-white">Moupia</span>
+              {/* <span className="text-slate-700">The Traveller</span> */}
             </h1>
           </Link>
         </div>
@@ -25,16 +28,30 @@ const Header = () => {
           <FaSearch className="text-slate-600" />
         </form>
         <ul className="flex gap-4">
-          <Link to="/about">
-            <li className="hidden sm:inline text-white hover:underline cursor-pointer">
-              About Us
-            </li>
-          </Link>
-          <Link to="/secure/admin-login">
+          <div className="mt-3 px-5">
+            <Link to="/about">
+              <li className="hidden sm:inline text-white hover:underline cursor-pointer">
+                About Us
+              </li>
+            </Link>
+          </div>
+
+          {currentUser ? (
+            <Link to="/profile">
+              <li className="hidden sm:inline text-white hover:underline cursor-pointer">
+                <img
+                  src={admin}
+                  className="h-12 w-12 rounded-full object-cover"
+                  alt="Admin"
+                />
+              </li>
+            </Link>
+          ) : null}
+          {/* <Link to="/profile">
             <li className="hidden sm:inline text-white hover:underline cursor-pointer">
               Admin
             </li>
-          </Link>
+          </Link> */}
         </ul>
       </div>
     </header>
