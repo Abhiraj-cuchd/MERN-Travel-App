@@ -6,7 +6,7 @@ import {
   signInFailure,
   signInStart,
   signInSuccess,
-} from "../../redux/User/userSlice";
+} from "../../Redux/User/userSlice";
 import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
